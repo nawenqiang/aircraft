@@ -1,5 +1,7 @@
 #include "HelloWorldScene.h"
 #include "AboutLayer.h"
+#include "SimpleAudioEngine.h"
+#include "OptionLayer.h"
 
 USING_NS_CC;
 
@@ -82,7 +84,7 @@ void HelloWorld::setUpView()
 	CCSprite *optionNormal = CCSprite::create("menu.png",CCRectMake(126,0,126,33));
 	CCSprite *optionPressed = CCSprite::create("menu.png",CCRectMake(126,33,126,33));
 	CCSprite *optionDisabled = CCSprite::create("menu.png",CCRectMake(126,66,126,33));
-	CCMenuItemSprite *option = CCMenuItemSprite::create(optionNormal,optionPressed,optionDisabled);
+	CCMenuItemSprite *option = CCMenuItemSprite::create(optionNormal,optionPressed,optionDisabled,menu_selector(HelloWorld::MenuoptionCallBack));
 
 	CCSprite *aboutNormal = CCSprite::create("menu.png",CCRectMake(256,0,126,33));
 	CCSprite *aboutPressed = CCSprite::create("menu.png",CCRectMake(256,33,126,33));
@@ -114,6 +116,27 @@ void HelloWorld::MenuaboutCallBack(CCObject* pSender)
 {
 	CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5,AboutLayer::scene()));
 }
+
+void HelloWorld::MenuoptionCallBack(CCObject* pSender)
+{
+	CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5,OptionLayer::scene()));
+}
+
+void HelloWorld::onEnter()
+{
+	CCLayer::onEnter();
+	bool isPlayed;
+	isPlayed = CCUserDefault::sharedUserDefault()->getBoolForKey("backmusic");
+	//add music
+	if(isPlayed)
+	{
+		if(!CocosDenshion::SimpleAudioEngine::sharedEngine()->isBackgroundMusicPlaying())
+		{
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->playBackgroundMusic("music/mainMainMusic.mp3",true);      
+		}
+	}
+}
+
 
 void HelloWorld::menuCloseCallback(CCObject* pSender)
 {

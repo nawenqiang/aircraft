@@ -22,7 +22,8 @@ public:
 	void setBackGroundImage(const char* imName);
 	void setUpView();
 	void MenuaboutCallBack(CCObject* pSender);
-	
+	void MenuoptionCallBack(CCObject* pSender);
+	void onEnter();
 };
 
 #endif // __HELLOWORLD_SCENE_H__

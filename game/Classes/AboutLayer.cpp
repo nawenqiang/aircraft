@@ -40,7 +40,7 @@ void AboutLayer::setUpView()
 	setBkIm("loading.png");
 
 	//title
-	CCSprite *sprite = CCSprite::create("menuTitle.png",CCRectMake(0.0,34.0,130.0,38.0));
+	CCSprite *sprite = CCSprite::create("menuTitle.png",CCRectMake(0.0,34.0,135.0,38.0));
 	sprite->setPosition(ccp(visibleSize.width/2,visibleSize.height-50));
 
 	this->addChild(sprite);
