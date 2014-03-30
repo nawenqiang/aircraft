@@ -37,13 +37,13 @@ bool GamingLayer::init()
 
 	//schedule
 	this->schedule(schedule_selector(GamingLayer::backgroundScrool),0.1f);
+	this->schedule(schedule_selector(GamingLayer::addNewBullet),0.5f);
 
 	//score layer
 	ScoreLayer *scoreLy = ScoreLayer::create();
 
 	//layer的anchorpoint对position无影响
 	scoreLy->setPosition(ccp(10.0,CCDirector::sharedDirector()->getWinSize().height-27));
-	scoreLy->getContentSize();
 	this->addChild(scoreLy);
 
 	//time layer
@@ -74,10 +74,18 @@ void GamingLayer::setUpView()
 	//add pause layer and hide it
 	PauseLayer *pauseLy = PauseLayer::create();
 	CCSize pauseLySize = pauseLy->getContentSize();
-	pauseLy->setPosition(ccp(visibleSize.width/2 - pauseLySize.width/2,
-		visibleSize.height/2 - pauseLySize.height/2));
+	pauseLy->setPosition(CCPointZero);
 	pauseLy->setVisible(false);
 	this->addChild(pauseLy,10,99);
+
+	//warrior 
+	m_warrior = WarriorLayer::create();
+	m_warrior->setPosition(CCPointZero);
+	this->addChild(m_warrior);
+
+	//WarriorBulletManager layer
+	m_WarriorBulletMgr = WarriorBulletManager::create();
+	this->addChild(m_WarriorBulletMgr,1);
 }
 
 void GamingLayer::MenupauseCallBack(CCObject* pSender)
@@ -131,4 +139,9 @@ void GamingLayer::setBkIm(const char* bkIm)
 void GamingLayer::menuBackCallback(CCObject* pSender)
 {
 //	CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5,HelloWorld::scene()));
+}
+
+void GamingLayer::addNewBullet(float val)
+{
+	m_WarriorBulletMgr->addNewBullet(m_warrior->getWarriorPos());
 }

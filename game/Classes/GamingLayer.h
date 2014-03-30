@@ -1,6 +1,8 @@
 #pragma once
 
 #include "cocos2d.h"
+#include "WarriorBulletManager.h"
+#include "WarriorLayer.h"
 
 USING_NS_CC;
 
@@ -20,4 +22,8 @@ public:
 	void menuBackCallback(CCObject* pSender);
 	void backgroundScrool(float val);
 	void MenupauseCallBack(CCObject* pSender);
+	void addNewBullet(float val);
+private:
+	WarriorBulletManager *m_WarriorBulletMgr;
+	WarriorLayer *m_warrior;
 };

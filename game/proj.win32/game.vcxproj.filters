@@ -42,6 +42,12 @@
     <ClCompile Include="..\Classes\Dlog.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\WarriorLayer.cpp">
+      <Filter>Classes\Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\WarriorBulletManager.cpp">
+      <Filter>Classes\Layer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -73,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Dlog.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WarriorLayer.h">
+      <Filter>Classes\Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\WarriorBulletManager.h">
+      <Filter>Classes\Layer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

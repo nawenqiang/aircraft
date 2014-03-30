@@ -140,6 +140,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\PauseLayer.cpp" />
     <ClCompile Include="..\Classes\ScoreLayer.cpp" />
     <ClCompile Include="..\Classes\TimeLayer.cpp" />
+    <ClCompile Include="..\Classes\WarriorBulletManager.cpp" />
+    <ClCompile Include="..\Classes\WarriorLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +154,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\PauseLayer.h" />
     <ClInclude Include="..\Classes\ScoreLayer.h" />
     <ClInclude Include="..\Classes\TimeLayer.h" />
+    <ClInclude Include="..\Classes\WarriorBulletManager.h" />
+    <ClInclude Include="..\Classes\WarriorLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
