@@ -2,6 +2,7 @@
 #include "AboutLayer.h"
 #include "SimpleAudioEngine.h"
 #include "OptionLayer.h"
+#include "GamingLayer.h"
 
 USING_NS_CC;
 
@@ -46,19 +47,6 @@ bool HelloWorld::init()
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 1);
 
- //   // add a label shows "Hello World"
- //   // create and initialize a label
- //   
- //   CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Arial", 24);
- //   
- //   // position the label on the center of the screen
- //   pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
- //                           origin.y + visibleSize.height - pLabel->getContentSize().height));
-
- //   // add the label as a child to this layer
- //   this->addChild(pLabel, 1);
-
-
     setUpView();
 
     return true;
@@ -79,17 +67,20 @@ void HelloWorld::setUpView()
 	CCSprite *newGameNormal = CCSprite::create("menu.png",CCRectMake(0,0,126,33));
 	CCSprite *newGamePressed = CCSprite::create("menu.png",CCRectMake(0,33,126,33));
 	CCSprite *newGameDisabled = CCSprite::create("menu.png",CCRectMake(0,66,126,33));
-	CCMenuItemSprite *newGame = CCMenuItemSprite::create(newGameNormal,newGamePressed,newGameDisabled);
+	CCMenuItemSprite *newGame = CCMenuItemSprite::create(newGameNormal,newGamePressed,newGameDisabled,
+		menu_selector(HelloWorld::MenunewGameCallBack));
 
 	CCSprite *optionNormal = CCSprite::create("menu.png",CCRectMake(126,0,126,33));
 	CCSprite *optionPressed = CCSprite::create("menu.png",CCRectMake(126,33,126,33));
 	CCSprite *optionDisabled = CCSprite::create("menu.png",CCRectMake(126,66,126,33));
-	CCMenuItemSprite *option = CCMenuItemSprite::create(optionNormal,optionPressed,optionDisabled,menu_selector(HelloWorld::MenuoptionCallBack));
+	CCMenuItemSprite *option = CCMenuItemSprite::create(optionNormal,optionPressed,optionDisabled,
+		menu_selector(HelloWorld::MenuoptionCallBack));
 
 	CCSprite *aboutNormal = CCSprite::create("menu.png",CCRectMake(256,0,126,33));
 	CCSprite *aboutPressed = CCSprite::create("menu.png",CCRectMake(256,33,126,33));
 	CCSprite *aboutDisabled = CCSprite::create("menu.png",CCRectMake(256,66,126,33));
-	CCMenuItemSprite *about = CCMenuItemSprite::create(aboutNormal,aboutPressed,aboutDisabled,menu_selector(HelloWorld::MenuaboutCallBack));
+	CCMenuItemSprite *about = CCMenuItemSprite::create(aboutNormal,aboutPressed,aboutDisabled,
+		menu_selector(HelloWorld::MenuaboutCallBack));
 
 	CCMenu *menu = CCMenu::create(newGame,option,about,NULL);
 	menu->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
@@ -120,6 +111,11 @@ void HelloWorld::MenuaboutCallBack(CCObject* pSender)
 void HelloWorld::MenuoptionCallBack(CCObject* pSender)
 {
 	CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5,OptionLayer::scene()));
+}
+
+void HelloWorld::MenunewGameCallBack(CCObject* pSender)
+{	
+	CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5,GamingLayer::scene()));
 }
 
 void HelloWorld::onEnter()

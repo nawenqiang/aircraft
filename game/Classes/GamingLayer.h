@@ -4,20 +4,20 @@
 
 USING_NS_CC;
 
-class AboutLayer : public CCLayer
+class GamingLayer : public CCLayer
 {
 public:
-	AboutLayer(void);
-	~AboutLayer(void);
+	GamingLayer(void);
+	~GamingLayer(void);
 
 	virtual bool init();
 	static CCScene* scene();
-	CREATE_FUNC(AboutLayer);
+	CREATE_FUNC(GamingLayer);
 
 public:
 	void setUpView();
 	void setBkIm(const char* bkIm);
 	void menuBackCallback(CCObject* pSender);
-		
+	void backgroundScrool(float val);
+	void MenupauseCallBack(CCObject* pSender);
 };
-

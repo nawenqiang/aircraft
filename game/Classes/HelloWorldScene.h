@@ -23,6 +23,7 @@ public:
 	void setUpView();
 	void MenuaboutCallBack(CCObject* pSender);
 	void MenuoptionCallBack(CCObject* pSender);
+	void MenunewGameCallBack(CCObject* pSender);
 	void onEnter();
 };
 

@@ -4,20 +4,20 @@
 
 USING_NS_CC;
 
-class AboutLayer : public CCLayer
+class OptionLayer : public CCLayer
 {
 public:
-	AboutLayer(void);
-	~AboutLayer(void);
+	OptionLayer(void);
+	~OptionLayer(void);
 
 	virtual bool init();
 	static CCScene* scene();
-	CREATE_FUNC(AboutLayer);
+	CREATE_FUNC(OptionLayer);
 
 public:
 	void setUpView();
 	void setBkIm(const char* bkIm);
+	void musicTriggerCallback(CCObject* pSender);
 	void menuBackCallback(CCObject* pSender);
 		
 };
-
