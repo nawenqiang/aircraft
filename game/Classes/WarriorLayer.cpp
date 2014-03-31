@@ -59,16 +59,28 @@ void WarriorLayer::setUpView()
 
 
 
-void WarriorLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent) 
-{
-	CCTouch *touch = (CCTouch *)pTouches->anyObject();
-	CCPoint locInVw = touch->getLocationInView();
-	CCPoint locInGl = CCDirector::sharedDirector()->convertToGL(locInVw);
+//void WarriorLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent) 
+//{
+//	CCTouch *touch = (CCTouch *)pTouches->anyObject();
+//	CCPoint locInVw = touch->getLocationInView();
+//	CCPoint locInGl = CCDirector::sharedDirector()->convertToGL(locInVw);
+//
+//	CCMoveTo *move = CCMoveTo::create(0.5f,locInGl);
+//	m_pWarrior->runAction(move);
+//}
 
-	CCMoveTo *move = CCMoveTo::create(0.5f,locInGl);
-	m_pWarrior->runAction(move);
+void WarriorLayer::registerWithTouchDispatcher(void)
+{
+	CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
+bool WarriorLayer::ccTouchBegan(CCTouch  *pTouches, CCEvent *pEvent)
+{
+	m_pWarrior->stopAllActions();
+	CCMoveTo *move = CCMoveTo::create(0.5f,pTouches->getLocation());
+	m_pWarrior->runAction(move);	
+	return true;
+}
 
 CCPoint WarriorLayer::getWarriorPos()
 {

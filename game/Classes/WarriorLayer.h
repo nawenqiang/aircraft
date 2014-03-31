@@ -17,8 +17,11 @@ public:
 
 public:
 	void setUpView();	
-	void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent); 
+	//void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent); 
+	bool ccTouchBegan(CCTouch  *pTouches, CCEvent *pEvent); 
 	CCPoint getWarriorPos();
+	void registerWithTouchDispatcher(void);
+
 private:
 	CCSprite *m_pWarrior;
 };

@@ -34,7 +34,6 @@ bool WarriorBulletManager::init()
 	m_pBulletArr->retain();
 
 	//schedule
-//	this->schedule(schedule_selector(WarriorBulletManager::addNewBullet),0.8f);
 	this->schedule(schedule_selector(WarriorBulletManager::moveAllBullet),0.1f);
 
 	return true;
@@ -50,11 +49,11 @@ void WarriorBulletManager::setUpView()
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("bullet.plist","bullet.png");
 
 	m_nBulletBatchNode = CCSpriteBatchNode::create("bullet.png");
+	this->addChild(m_nBulletBatchNode);
 
 	//为m_nBulletBatchNode加光晕效果
 	ccBlendFunc cb = {GL_SRC_ALPHA,GL_ONE};
 	m_nBulletBatchNode->setBlendFunc(cb);
-	this->addChild(m_nBulletBatchNode);
 
 }
 
@@ -78,7 +77,7 @@ void WarriorBulletManager::moveAllBullet(float val)
 	{
 		CCSprite *sprite = (CCSprite *)obj;
 		sprite->setPositionY(sprite->getPositionY()+10);
-		if(sprite->getPositionY() > visibleSize.height)
+		if(sprite->getPositionY() >= visibleSize.height)
 		{
 			m_nBulletBatchNode->removeChild(sprite,true);
 			m_pBulletArr->removeObject(obj);
